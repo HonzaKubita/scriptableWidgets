@@ -50,8 +50,8 @@ function getCurrentTime() {
 
 function isCorrectTimeOrder(time1, time2) {
   // Parse the time strings into Date objects for comparison
-  const date1 = new Date(`1970-01-01T${time1}`);
-  const date2 = new Date(`1970-01-01T${time2}`);
+  const date1 = new Date(`1970-01-01T${time1}:00`);
+  const date2 = new Date(`1970-01-01T${time2}:00`);
 
   // Compare the two Date objects
   if (date1 < date2) {
@@ -81,12 +81,13 @@ function getNextRing() {
 
 const nextRing = getNextRing();
 
+// console.log(nextRing.time);
+
 const widget = new ListWidget();
 
 let mainCol = widget.addStack();
 
-let text = mainCol.addText(`${nextRing.time}`);
-  text.font = Font.heading()
+let text = mainCol.addText(`${nextRing.time || "Freedom"}`);
   text.color = new Color('#ffffff') // white
 
 Script.setWidget(widget);
